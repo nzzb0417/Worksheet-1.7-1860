@@ -1,0 +1,13 @@
+CHIP DecoderSegmentG {
+    IN in[4];
+    OUT g;
+    PARTS:
+    // ¬in[1]
+    Not(in=in[1], out=n1);
+    // ¬in[3] & ¬in[0]
+    Not(in=in[3], out=n3);
+    Not(in=in[0], out=n0);
+    And(a=n3, b=n0, out=n30);
+    // OR the two terms
+    Or(a=n1, b=n30, out=g);
+}
